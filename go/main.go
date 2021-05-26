@@ -8,10 +8,10 @@ import (
 func setupServer() *gin.Engine {
 	r := gin.Default()
 
-	r.GET("/books", controllers.ReadBooks)
-	r.POST("/book", controllers.CreateBook)
-	r.PUT("/book", controllers.UpdateBook)
-	r.DELETE("/book", controllers.DeleteBook)
+	r.GET("/api/v1/books", controllers.ReadBooks)
+	r.POST("/api/v1/book", controllers.CreateBook)
+	r.PUT("/api/v1/book", controllers.UpdateBook)
+	r.DELETE("/api/v1/book", controllers.DeleteBook)
 
 	return r
 }

@@ -18,11 +18,11 @@ func CreateBook(c *gin.Context) {
 		return
 	}
 
+	count += 1
 	book := models.Book{ID: count, Title: req.Title, Author: req.Author}
 	books = append(books, book)
 
 	c.JSON(http.StatusOK, gin.H{"message": fmt.Sprintf("Created Book with ID %v", count)})
-	count += 1
 }
 
 func ReadBooks(c *gin.Context) {
@@ -62,6 +62,6 @@ func DeleteBook(c *gin.Context) {
 		return
 	}
 
-	books = append(books[:*(req.ID)], books[*(req.ID)+1:]...)
+	books = append(books[:*(req.ID)-1], books[*(req.ID):]...)
 	c.JSON(http.StatusOK, gin.H{"message": fmt.Sprintf("Deleted Book with ID %v", *(req.ID))})
 }
